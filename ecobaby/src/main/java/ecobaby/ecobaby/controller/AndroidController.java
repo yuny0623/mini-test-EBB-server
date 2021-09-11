@@ -4,7 +4,6 @@ import ecobaby.ecobaby.domain.Member;
 import ecobaby.ecobaby.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -19,25 +18,29 @@ public class AndroidController {
         this.memberRepository = memberRepository;
     }
 
-    @RequestMapping("/main/ranking") //랭킹 반환하기
+    /*
+        랭킹확인
+     */
+    @GetMapping("/main/ranking") //전체 랭킹 반환
+    @ResponseBody
     public List<Member> rankingCheck(){
         return memberRepository.findAll();
     }
-
-    @RequestMapping(value = "/main/login", method = RequestMethod.POST)
+    
+    /*
+        로그인 
+     */
+    @PostMapping("/main/login")
     @ResponseBody
     public boolean login(@RequestBody Member member){ //로그인
         boolean valid = validationCheck(member.getId(), member.getPassword());
         if (valid){
-            return true; //유효하면 true반환
+            return true;  //유효하면 true반환
         }
         else{
-            return false;
+            return false; //유효하지 않으면 false반환
         }
     }
-    // 회원가입은
-    // 1. 해당 id가 있는지 체크하고
-    // 2. id와 password가 맞는지를 체크하면 됨/
     private boolean validationCheck(Long id, String password) { //회원가입시 중복체크
         Member result = memberRepository.findById(id); //id가 있는지 체크하기
         if (result == null){ // id가 없으면?
@@ -51,9 +54,10 @@ public class AndroidController {
             }
         }
     }
-    //--------------------------------------------------------------------------
-
-    @RequestMapping(value = "/main/signup", method = RequestMethod.POST)
+    /*
+        회원가입 
+     */
+    @PostMapping("/main/signup")
     @ResponseBody
     public boolean signup(@RequestBody Member member){ //회원가입하기
         boolean valid = dupilcateCheck(member.getId());
@@ -72,5 +76,15 @@ public class AndroidController {
         }else{
             return false;
         }
+    }
+
+    /*
+        점수 업데이트
+     */
+    @GetMapping("/main/game/update_score")
+    @ResponseBody
+    public Member score_update(@RequestBody Member member){
+        memberRepository.save(member);
+        return member;
     }
 }
