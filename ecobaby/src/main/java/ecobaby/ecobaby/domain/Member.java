@@ -9,15 +9,15 @@ import javax.persistence.Id;
 public class Member {
 
     @Id
-    private Long id;
+    private String id;
     private String password;
     private int score; //점수
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

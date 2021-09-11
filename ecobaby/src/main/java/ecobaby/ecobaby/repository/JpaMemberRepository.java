@@ -25,7 +25,7 @@ public class JpaMemberRepository implements MemberRepository {
     }
 
     @Override
-    public Member findById(Long id) {
+    public Member findById(String id) {
         return em.find(Member.class, id); // null일 수도 있음.
     }
 
