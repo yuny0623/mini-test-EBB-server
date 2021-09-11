@@ -24,12 +24,12 @@ public class AndroidController {
         return memberRepository.findAll();
     }
 
-    @RequestMapping(value = "/main/signup", method = RequestMethod.POST)
+    @RequestMapping(value = "/main/login", method = RequestMethod.POST)
     @ResponseBody
-    public boolean signin(@RequestBody Member member){ //회원가입
+    public boolean login(@RequestBody Member member){ //로그인
         boolean valid = validationCheck(member.getId(), member.getPassword());
         if (valid){
-            return true; //우효하면 true반환
+            return true; //유효하면 true반환
         }
         else{
             return false;
