@@ -77,6 +77,7 @@ class EcobabyApplicationTests {
         System.out.println("httpStatusCode.getMessage() = " + httpStatusCode.getMessage() + "\n");
         assertThat(httpStatusCode.getStatus()).isEqualTo(400);
     }
+
     @Test
     public void 점수업데이트(){
         Member member = new Member("auto31", "dfaib31", 100);

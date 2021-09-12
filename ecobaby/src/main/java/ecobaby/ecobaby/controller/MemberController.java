@@ -35,7 +35,7 @@ public class MemberController {
     /*
         로그인 
      */
-    @GetMapping("/main/login")
+    @PostMapping("/main/login")
     @ResponseBody
     public HTTPStatusCode login(@RequestBody LoginInfo loginInfo){ //로그인
         boolean valid = memberService.loginValidationCheck(loginInfo.getId(), loginInfo.getPassword());
@@ -44,7 +44,7 @@ public class MemberController {
     /*
         회원가입 
      */
-    @GetMapping("/main/signup")
+    @PostMapping("/main/signup")
     @ResponseBody
     public HTTPStatusCode signup(@RequestBody LoginInfo loginInfo){ //회원가입하기
         boolean valid = memberService.signupValidationCheck(loginInfo.getId());
