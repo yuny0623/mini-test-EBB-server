@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public class JpaMemberRepository implements MemberRepository {
 
-    private EntityManager em;
+    private final EntityManager em;
 
     @Autowired
     public JpaMemberRepository(EntityManager em) {

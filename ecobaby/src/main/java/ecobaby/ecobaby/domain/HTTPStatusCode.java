@@ -7,6 +7,7 @@ import javax.persistence.Id;
 public class HTTPStatusCode {
     private int status;
     private boolean success;
+
     @Id
     private String message;
 
