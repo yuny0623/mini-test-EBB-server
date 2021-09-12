@@ -4,6 +4,7 @@ import ecobaby.ecobaby.controller.MemberController;
 import ecobaby.ecobaby.domain.HTTPStatusCode;
 import ecobaby.ecobaby.domain.LoginInfo;
 import ecobaby.ecobaby.domain.Member;
+import ecobaby.ecobaby.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ class EcobabyApplicationTests {
 
     @Autowired
     private MemberController memberController;
+    @Autowired
+    private MemberRepository memberRepository;
 
     /*
         로그인 성공
@@ -41,7 +44,7 @@ class EcobabyApplicationTests {
     @Test
     public void 로그인실패(){
         //given
-        LoginInfo loginInfo = new LoginInfo("auto33","dfaib32");
+        LoginInfo loginInfo = new LoginInfo("auto33","zzaefadga");
         //when
         HTTPStatusCode httpStatusCode = memberController.login(loginInfo);
         //then
@@ -73,5 +76,13 @@ class EcobabyApplicationTests {
         //then
         System.out.println("httpStatusCode.getMessage() = " + httpStatusCode.getMessage() + "\n");
         assertThat(httpStatusCode.getStatus()).isEqualTo(400);
+    }
+    @Test
+    public void 점수업데이트(){
+        Member member = new Member("auto31", "dfaib31", 100);
+        memberController.score_update(member);
+        Member result = memberRepository.findById("auto31");
+        assertThat(100).isEqualTo(result.getScore());
+
     }
 }

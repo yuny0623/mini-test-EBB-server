@@ -55,9 +55,7 @@ public class MemberController {
         점수 업데이트
      */
     @GetMapping("/main/game/update_score")
-    @ResponseBody
-    public Member score_update(@RequestBody Member member){
+    public void score_update(@RequestBody Member member){
         memberService.save(member);
-        return member;
     }
 }
