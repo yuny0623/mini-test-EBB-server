@@ -25,64 +25,64 @@ class EcobabyApplicationTests {
     @Autowired
     private MemberRepository memberRepository;
 
-    /*
-        로그인 성공
-     */
-    @Test
-    public void 로그인성공(){
-        //given
-        LoginInfo loginInfo = new LoginInfo("auto33","dfaib31");
-        //when
-        HTTPStatusCode httpStatusCode = memberController.login(loginInfo);
-        //then
-        System.out.println("httpStatusCode.getMessage() = " + httpStatusCode.getMessage() + "\n");
-        assertThat(httpStatusCode.getStatus()).isEqualTo(200);
-    }
-    /*
-        로그인 실패
-     */
-    @Test
-    public void 로그인실패(){
-        //given
-        LoginInfo loginInfo = new LoginInfo("auto33","zzaefadga");
-        //when
-        HTTPStatusCode httpStatusCode = memberController.login(loginInfo);
-        //then
-        System.out.println("httpStatusCode.getMessage() = " + httpStatusCode.getMessage() + "\n");
-        assertThat(httpStatusCode.getStatus()).isEqualTo(400);
-    }
-    /*
-        회원가입성공
-    */
-    @Test
-    public void 회원가입성공(){
-        //given
-        LoginInfo loginInfo = new LoginInfo("zzzzzzz","zzzzzz");
-        //when
-        HTTPStatusCode httpStatusCode = memberController.signup(loginInfo);
-        //then
-        System.out.println("httpStatusCode.getMessage() = " + httpStatusCode.getMessage() + "\n");
-        assertThat(httpStatusCode.getStatus()).isEqualTo(200);
-    }
-    /*
-        회원가입실패
-     */
-    @Test
-    public void 회원가입실패(){
-        //given
-        LoginInfo loginInfo = new LoginInfo("auto33","zzzzzz");
-        //when
-        HTTPStatusCode httpStatusCode = memberController.signup(loginInfo);
-        //then
-        System.out.println("httpStatusCode.getMessage() = " + httpStatusCode.getMessage() + "\n");
-        assertThat(httpStatusCode.getStatus()).isEqualTo(400);
-    }
-    @Test
-    public void 점수업데이트(){
-        Member member = new Member("auto31", "dfaib31", 100);
-        memberController.score_update(member);
-        Member result = memberRepository.findById("auto31");
-        assertThat(100).isEqualTo(result.getScore());
+//     /*
+//         로그인 성공
+//      */
+//     @Test
+//     public void 로그인성공(){
+//         //given
+//         LoginInfo loginInfo = new LoginInfo("auto33","dfaib31");
+//         //when
+//         HTTPStatusCode httpStatusCode = memberController.login(loginInfo);
+//         //then
+//         System.out.println("httpStatusCode.getMessage() = " + httpStatusCode.getMessage() + "\n");
+//         assertThat(httpStatusCode.getStatus()).isEqualTo(200);
+//     }
+//     /*
+//         로그인 실패
+//      */
+//     @Test
+//     public void 로그인실패(){
+//         //given
+//         LoginInfo loginInfo = new LoginInfo("auto33","zzaefadga");
+//         //when
+//         HTTPStatusCode httpStatusCode = memberController.login(loginInfo);
+//         //then
+//         System.out.println("httpStatusCode.getMessage() = " + httpStatusCode.getMessage() + "\n");
+//         assertThat(httpStatusCode.getStatus()).isEqualTo(400);
+//     }
+//     /*
+//         회원가입성공
+//     */
+//     @Test
+//     public void 회원가입성공(){
+//         //given
+//         LoginInfo loginInfo = new LoginInfo("zzzzzzz","zzzzzz");
+//         //when
+//         HTTPStatusCode httpStatusCode = memberController.signup(loginInfo);
+//         //then
+//         System.out.println("httpStatusCode.getMessage() = " + httpStatusCode.getMessage() + "\n");
+//         assertThat(httpStatusCode.getStatus()).isEqualTo(200);
+//     }
+//     /*
+//         회원가입실패
+//      */
+//     @Test
+//     public void 회원가입실패(){
+//         //given
+//         LoginInfo loginInfo = new LoginInfo("auto33","zzzzzz");
+//         //when
+//         HTTPStatusCode httpStatusCode = memberController.signup(loginInfo);
+//         //then
+//         System.out.println("httpStatusCode.getMessage() = " + httpStatusCode.getMessage() + "\n");
+//         assertThat(httpStatusCode.getStatus()).isEqualTo(400);
+//     }
+//     @Test
+//     public void 점수업데이트(){
+//         Member member = new Member("auto31", "dfaib31", 100);
+//         memberController.score_update(member);
+//         Member result = memberRepository.findById("auto31");
+//         assertThat(100).isEqualTo(result.getScore());
 
-    }
+//     }
 }
