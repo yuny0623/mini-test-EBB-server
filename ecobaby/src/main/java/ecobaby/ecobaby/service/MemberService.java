@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -44,6 +43,21 @@ public class MemberService{
         List<Member> members = memberRepository.findAll();
         Collections.sort(members, Collections.reverseOrder());
         return  members;
+    }
+
+    /*
+        업데이트
+     */
+    public boolean save_with_update(Member member) {
+        Member findMember = memberRepository.findById(member.getId());
+        if(findMember == null){
+            return false;
+        }
+        else{
+            findMember.setScore(member.getScore());
+            memberRepository.save(findMember);
+            return true;
+        }
     }
 
     /*

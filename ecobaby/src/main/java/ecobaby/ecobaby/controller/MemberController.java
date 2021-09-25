@@ -5,7 +5,6 @@ import ecobaby.ecobaby.domain.LoginInfo;
 import ecobaby.ecobaby.domain.Member;
 import ecobaby.ecobaby.service.MemberService;
 import ecobaby.ecobaby.service.StatusService;
-import jdk.jshell.Snippet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -54,8 +53,10 @@ public class MemberController {
     /*
         점수 업데이트
      */
-    @PostMapping("/main/game/update_score")
-    public void score_update(@RequestBody Member member){
-        memberService.save(member);
+    @PostMapping("main/game/update_score")
+    @ResponseBody
+    public HTTPStatusCode score_update(@RequestBody Member member){
+        boolean valid = memberService.save_with_update(member);
+        return statusService.generate_status_for_update(valid);
     }
 }

@@ -80,10 +80,28 @@ class EcobabyApplicationTests {
 
     @Test
     public void 점수업데이트(){
-        Member member = new Member("auto31", "dfaib31", 100);
-        memberController.score_update(member);
-        Member result = memberRepository.findById("auto31");
-        assertThat(100).isEqualTo(result.getScore());
+//        Member member = new Member("auto31", "dfaib31", 100);
+//        memberController.score_update(member);
+//        Member result = memberRepository.findById("auto31");
+//        assertThat(100).isEqualTo(result.getScore());
+        Member member = new Member("test1", "test1", 0);
+//        memberController.signup(new LoginInfo(member.getId(), member.getPassword()));
+        memberRepository.save(member);
+        Member findMember = memberRepository.findById("test1");
+        if(findMember == null ){
+            throw new NullPointerException("findMember is null: line 92");
+        }
+        System.out.println(findMember);
+        findMember.setScore(200);
+        memberController.score_update(findMember);
+        Member AfterUpdateMember = memberRepository.findById("test1");
+        assertThat(200).isEqualTo(AfterUpdateMember.getScore());
+    }
 
+    @Test
+    public void 점수갱신확인(){
+        Member member = new Member("test","test",100);
+        HTTPStatusCode result = memberController.score_update(member);
+        assertThat("점수 갱신이 성공하였습니다.").isEqualTo(result.getMessage());
     }
 }

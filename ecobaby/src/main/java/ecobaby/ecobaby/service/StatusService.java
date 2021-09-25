@@ -38,4 +38,14 @@ public class StatusService {
         return status;
     }
 
+    public HTTPStatusCode generate_status_for_update(boolean valid){
+        if(valid){
+            status = new HTTPStatusCode(200, true, "점수 갱신이 성공하였습니다.");
+        }
+        else{
+            status = new HTTPStatusCode(400, false, "점수 갱신이 거부되었습니다.");
+        }
+        return status;
+    }
+
 }

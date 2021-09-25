@@ -10,6 +10,7 @@ public class Member implements Comparable<Member>{
 
     @Id
     private String id;
+
     private String password;
     private int score; //점수
 
@@ -55,5 +56,14 @@ public class Member implements Comparable<Member>{
             return 1;
         }
         return -1;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id='" + id + '\'' +
+                ", password='" + password + '\'' +
+                ", score=" + score +
+                '}';
     }
 }
