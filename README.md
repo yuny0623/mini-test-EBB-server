@@ -1,2 +1,4 @@
-# eco-server-test
-server test with springboot + jpa 
+# EBB-Server
+springboot + jpa + mysql 
+
+[server spec](https://github.com/TeamEBB/EBB-Server/wiki)
